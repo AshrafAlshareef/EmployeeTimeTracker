@@ -15,3 +15,5 @@ HEADERS += mainwindow.h \
 FORMS += mainwindow.ui
 
 RESOURCES += ../translations/translations.qrc
+
+LIBS += -L$$OUT_PWD/../core/debug -lcore

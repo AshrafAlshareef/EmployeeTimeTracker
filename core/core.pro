@@ -7,5 +7,5 @@ HEADERS += employee.h \
            hourscalculator.h
 
 SOURCES += employee.cpp \
-           hourscalculator.cpp \
-           appsettings.cpp
+           appsettings.cpp \
+           hourscalculator.cpp
