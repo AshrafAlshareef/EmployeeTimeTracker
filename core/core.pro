@@ -3,8 +3,8 @@ TARGET = core
 CONFIG += staticlib
 
 HEADERS += employee.h \
-           hourscalculator.h \
-           appsettings.h
+           appsettings.h \
+           hourscalculator.h
 
 SOURCES += employee.cpp \
            hourscalculator.cpp \

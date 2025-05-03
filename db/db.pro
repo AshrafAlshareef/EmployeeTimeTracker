@@ -3,9 +3,9 @@ TARGET = db
 CONFIG += staticlib
 
 HEADERS += dbmanager.h \
-           employeedao.h \
-           workrecorddao.h
+           employeedataaccessobject.h \
+           workrecorddataaccessobject.h
 
 SOURCES += dbmanager.cpp \
-           employeedao.cpp \
-           workrecorddao.cpp
+           employeedataaccessobject.cpp \
+           workrecorddataaccessobject.cpp

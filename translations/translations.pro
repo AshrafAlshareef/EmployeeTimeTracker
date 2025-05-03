@@ -6,6 +6,7 @@ TRANSLATIONS += i18n/en.ts \
                 i18n/ar.ts
 
 HEADERS += translator.h
+
 SOURCES += translator.cpp
 
-RESOURCES += translations.qrc
+RESOURCES += Translations.qrc
