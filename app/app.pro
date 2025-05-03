@@ -16,4 +16,14 @@ FORMS += mainwindow.ui
 
 RESOURCES += ../translations/translations.qrc
 
-LIBS += -L$$OUT_PWD/../core/debug -lcore
+contains(CONFIG, debug, debug|release) {
+    BUILD_TYPE = debug
+} else {
+    BUILD_TYPE = release
+}
+
+LIBS += -L$$OUT_PWD/../core/$$BUILD_TYPE -lcore \
+        -L$$OUT_PWD/../db/$$BUILD_TYPE -ldb \
+        -L$$OUT_PWD/../ui/$$BUILD_TYPE -lui \
+        -L$$OUT_PWD/../translations/$$BUILD_TYPE -ltranslations
+
