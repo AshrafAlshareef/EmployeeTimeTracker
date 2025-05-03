@@ -15,7 +15,3 @@ HEADERS += mainwindow.h \
 FORMS += mainwindow.ui
 
 RESOURCES += ../translations/translations.qrc
-
-LIBS += -L../core -lcore \
-        -L../db -ldb \
-        -L../ui -lui

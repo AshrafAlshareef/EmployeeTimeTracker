@@ -1,14 +1,20 @@
+
+// ui/employeepage.cpp
 #include "employeepage.h"
 #include "ui_employeepage.h"
 
-EmployeePage::EmployeePage(QWidget *parent)
-    : QDialog(parent)
-    , ui(new Ui::EmployeePage)
-{
+/**
+ * @brief Constructs the EmployeePage and sets up the UI.
+ */
+EmployeePage::EmployeePage(QWidget *parent) :
+    QWidget(parent),
+    ui(new Ui::EmployeePage) {
     ui->setupUi(this);
 }
 
-EmployeePage::~EmployeePage()
-{
+/**
+ * @brief Destructor for EmployeePage.
+ */
+EmployeePage::~EmployeePage() {
     delete ui;
 }

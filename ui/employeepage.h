@@ -1,13 +1,22 @@
+// ui/employeepage.h
 #pragma once
 
-#include <QDialog>
+/**
+ * @file employeepage.h
+ * @brief Declares the EmployeePage widget used to manage an employee's work records.
+ */
+
+#include <QWidget>
 
 namespace Ui {
 class EmployeePage;
 }
 
-class EmployeePage : public QDialog
-{
+/**
+ * @class EmployeePage
+ * @brief Widget for displaying and editing work records for a selected employee.
+ */
+class EmployeePage : public QWidget {
     Q_OBJECT
 
 public:
@@ -15,5 +24,5 @@ public:
     ~EmployeePage();
 
 private:
-    Ui::EmployeePage *ui;
+    Ui::EmployeePage *ui; ///< UI pointer for the EmployeePage widget
 };

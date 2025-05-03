@@ -2,6 +2,8 @@ TEMPLATE = lib
 TARGET = ui
 CONFIG += staticlib
 
+QT += widgets
+
 HEADERS += employeepage.h \
            importexportpage.h \
            preferencespage.h \

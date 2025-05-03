@@ -1,18 +1,104 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>ImportExportPage</class>
- <widget class="QDialog" name="ImportExportPage">
-  <property name="geometry">
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>400</width>
-    <height>300</height>
-   </rect>
-  </property>
+ <widget class="QWidget" name="ImportExportPage">
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Import / Export</string>
   </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+
+   <item>
+    <widget class="QGroupBox" name="groupOperation">
+     <property name="title">
+      <string>Operation</string>
+     </property>
+     <layout class="QHBoxLayout" name="operationLayout">
+      <item>
+       <widget class="QRadioButton" name="radioImport">
+        <property name="text">
+         <string>Import</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioExport">
+        <property name="text">
+         <string>Export</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+
+   <item>
+    <widget class="QGroupBox" name="groupFormat">
+     <property name="title">
+      <string>File Format</string>
+     </property>
+     <layout class="QHBoxLayout" name="formatLayout">
+      <item>
+       <widget class="QRadioButton" name="radioCSV">
+        <property name="text">
+         <string>CSV</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioJSON">
+        <property name="text">
+         <string>JSON</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+
+   <item>
+    <widget class="QGroupBox" name="groupScope">
+     <property name="title">
+      <string>Target</string>
+     </property>
+     <layout class="QVBoxLayout" name="scopeLayout">
+      <item>
+       <widget class="QRadioButton" name="radioAllEmployees">
+        <property name="text">
+         <string>All Employees</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioSingleEmployee">
+        <property name="text">
+         <string>Selected Employee</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="comboEmployee"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+
+   <item>
+    <widget class="QPushButton" name="btnPreview">
+     <property name="text">
+      <string>Preview Import</string>
+     </property>
+    </widget>
+   </item>
+
+   <item>
+    <widget class="QPushButton" name="btnExecute">
+     <property name="text">
+      <string>Execute</string>
+     </property>
+    </widget>
+   </item>
+
+  </layout>
  </widget>
  <resources/>
  <connections/>

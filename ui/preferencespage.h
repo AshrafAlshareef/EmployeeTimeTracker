@@ -1,13 +1,22 @@
+// ui/preferencespage.h
 #pragma once
 
-#include <QDialog>
+/**
+ * @file preferencespage.h
+ * @brief Declares the PreferencesPage widget for user settings.
+ */
+
+#include <QWidget>
 
 namespace Ui {
 class PreferencesPage;
 }
 
-class PreferencesPage : public QDialog
-{
+/**
+ * @class PreferencesPage
+ * @brief Widget for editing application preferences like language and database connection.
+ */
+class PreferencesPage : public QWidget {
     Q_OBJECT
 
 public:
@@ -15,5 +24,5 @@ public:
     ~PreferencesPage();
 
 private:
-    Ui::PreferencesPage *ui;
+    Ui::PreferencesPage *ui; ///< Pointer to the UI definition
 };

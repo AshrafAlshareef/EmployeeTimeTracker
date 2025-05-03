@@ -2,6 +2,9 @@ TEMPLATE = lib
 TARGET = db
 CONFIG += staticlib
 
+QT += sql
+
+
 HEADERS += dbmanager.h \
            employeedataaccessobject.h \
            workrecorddataaccessobject.h
