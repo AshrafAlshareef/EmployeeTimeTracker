@@ -1,6 +1,6 @@
 <RCC>
-    <qresource prefix="/">
-        <file>i18n/ar.ts</file>
-        <file>i18n/en.ts</file>
+    <qresource prefix="/translations">
+        <file>i18n/ar.qm</file>
+        <file>i18n/en.qm</file>
     </qresource>
 </RCC>

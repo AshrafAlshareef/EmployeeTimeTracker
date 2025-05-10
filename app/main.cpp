@@ -16,7 +16,15 @@ int main(int argc, char *argv[]) {
     app.setOrganizationName("MyCompany");
 
     // Load last used language
-    translator.loadLanguage(translator.currentLanguage());
+    // translator.loadLanguage(translator.currentLanguage());
+    // Choose language manually (could be from settings)
+    QString langCode = "ar";  // or "en"
+
+    // Load from resource file (thanks to translations.qrc)
+    if (translator.loadLanguage(langCode))
+    {
+        qWarning("Translation file not loaded!");
+    }
 
     MainWindow w;
     w.show();
