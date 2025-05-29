@@ -1,6 +1,8 @@
 // ui/employeepage.h
 #pragma once
 
+#include <../core/employee.h>
+
 /**
  * @file employeepage.h
  * @brief Declares the EmployeePage widget used to manage an employee's work records.
@@ -22,6 +24,8 @@ class EmployeePage : public QWidget {
 public:
     explicit EmployeePage(QWidget *parent = nullptr);
     ~EmployeePage();
+
+    void setEmployee(const Employee &employee);
 
 private:
     Ui::EmployeePage *ui; ///< UI pointer for the EmployeePage widget

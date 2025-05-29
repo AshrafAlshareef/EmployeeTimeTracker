@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ui version="4.0">
+ <class>AddEmployeePage</class>
+ <widget class="QWidget" name="AddEmployeePage">
+  <property name="windowTitle">
+   <string>FORM_ADD_EMPLOYEE</string>
+  </property>
+  <layout class="QFormLayout" name="formAddEmployee">
+   <item row="0" column="0">
+    <widget class="QLabel" name="labelFirstName">
+     <property name="text">
+      <string>First Name *</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QLineEdit" name="editFirstName"/>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="labelMiddleName">
+     <property name="text">
+      <string>Middle Name</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QLineEdit" name="editMiddleName"/>
+   </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="labelLastName">
+     <property name="text">
+      <string>Last Name *</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QLineEdit" name="editLastName"/>
+   </item>
+   <item row="3" column="0">
+    <widget class="QLabel" name="labelTelephone">
+     <property name="text">
+      <string>Telephone</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1">
+    <widget class="QLineEdit" name="editTelephone"/>
+   </item>
+   <item row="4" column="0">
+    <widget class="QLabel" name="labelBirthDate">
+     <property name="text">
+      <string>Birth Date</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1">
+    <widget class="QDateEdit" name="editBirthDate"/>
+   </item>
+   <item row="5" column="0">
+    <widget class="QLabel" name="labelIdNumber">
+     <property name="text">
+      <string>ID Number</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="1">
+    <widget class="QLineEdit" name="editIdNumber"/>
+   </item>
+   <item row="6" column="0" colspan="2">
+    <widget class="QPushButton" name="btnConfirmAdd">
+     <property name="text">
+      <string>CONFIRM_ADD</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

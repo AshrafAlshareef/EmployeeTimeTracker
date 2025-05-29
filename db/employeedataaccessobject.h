@@ -29,4 +29,8 @@ public:
      * @return true if insert succeeds, false otherwise
      */
     static bool insertEmployee(const QString &name, int *insertedId = nullptr);
+
+    // TODO: add all these informations.
+    static bool insertEmployee(const QString &name, const QString &phone, const QString &idNumber,
+                               const QDate &birthDate, int *insertedId);
 };

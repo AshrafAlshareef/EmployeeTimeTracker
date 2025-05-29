@@ -13,13 +13,16 @@ contains(CONFIG, debug, debug|release) {
 
 
 HEADERS += employeepage.h \
+           addemployeepage.h \
            importexportpage.h \
            preferencespage.h \
 
 SOURCES += employeepage.cpp \
+           addemployeepage.cpp \
            importexportpage.cpp \
            preferencespage.cpp \
 
 FORMS += employeepage.ui \
+         addemployeepage.ui \
          importexportpage.ui \
          preferencespage.ui \

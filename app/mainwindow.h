@@ -1,3 +1,4 @@
+
 // app/mainwindow.h
 #pragma once
 
@@ -6,10 +7,13 @@
  * @brief Declares the main application window for managing employees and their records.
  */
 
+#include <AddEmployeePage.h>
 #include <QMainWindow>
 #include <QComboBox>
 #include <QWidgetAction>
-#include "preferencespage.h"
+#include <QListWidgetItem>
+#include <preferencespage.h>
+#include <employeepage.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -29,10 +33,15 @@ public:
 private slots:
     void onLanguageChanged(int index);
     void on_actionPreferences_triggered();
+    void onEmployeeSelected(QListWidgetItem *item);
+    void onAddEmployeeClicked();
 
 private:
     Ui::MainWindow *ui; ///< Pointer to the UI
     QComboBox *_languageCombo = nullptr; ///< Language selector combo box
     PreferencesPage *preferencesPage = nullptr;
+    EmployeePage *employeePage = nullptr;
+    AddEmployeePage *addEmployeePage = nullptr;
 
+    void loadEmployees();
 };

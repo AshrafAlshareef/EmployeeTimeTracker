@@ -5,6 +5,7 @@
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QDebug>
+#include <QDateTime>
 
 QList<QVariantMap> EmployeeDataAccessObject::fetchEmployees() {
     QSqlDatabase db = DBManager::instance().database();
@@ -47,5 +48,24 @@ bool EmployeeDataAccessObject::insertEmployee(const QString &name, int *inserted
         *insertedId = query.lastInsertId().toInt();
     }
 
+    return true;
+}
+
+bool EmployeeDataAccessObject::insertEmployee(
+    const QString &name, const QString &phone, const QString &idNumber,
+    const QDate &birthDate, int *insertedId)
+{
+    QSqlQuery query(DBManager::instance().database());
+    query.prepare(R"(
+        INSERT INTO employees (name, phone, id_number, birth_date)
+        VALUES (:name, :phone, :idnum, :birth)
+    )");
+    query.bindValue(":name", name);
+    query.bindValue(":phone", phone);
+    query.bindValue(":idnum", idNumber);
+    query.bindValue(":birth", birthDate.toString(Qt::ISODate));
+
+    if (!query.exec()) return false;
+    if (insertedId) *insertedId = query.lastInsertId().toInt();
     return true;
 }

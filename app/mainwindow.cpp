@@ -3,6 +3,11 @@
 #include "ui_mainwindow.h"
 #include "translator.h"
 #include "appsettings.h"
+#include "employeedataaccessobject.h"
+#include "employee.h"
+#include <QInputDialog>
+
+#include <workrecorddataaccessobject.h>
 
 
 /**
@@ -37,6 +42,13 @@ MainWindow::MainWindow(QWidget *parent)
     connect(&Translator::instance(), &Translator::languageChanged, this, [=]() {
         ui->retranslateUi(this);
     });
+
+    connect(ui->listEmployees, &QListWidget::itemClicked,
+            this, &MainWindow::onEmployeeSelected);
+
+    connect(ui->btnAddEmployee, &QPushButton::clicked,
+            this, &MainWindow::onAddEmployeeClicked);
+
 }
 
 /**
@@ -61,9 +73,80 @@ void MainWindow::onLanguageChanged(int index)
 void MainWindow::on_actionPreferences_triggered()
 {
     // preferencesPage
-    preferencesPage = new PreferencesPage(this);
-
+    if (!preferencesPage) {
+        preferencesPage = new PreferencesPage(this);
+    }
     centralWidget()->layout()->addWidget(preferencesPage);
     preferencesPage->show();
 }
 
+
+
+void MainWindow::loadEmployees() {
+    QList<QVariantMap> employees = EmployeeDataAccessObject::fetchEmployees();
+    for (const QVariantMap &emp : employees) {
+        int id = emp["id"].toInt();
+        QString name = emp["name"].toString();
+        // Add to UI (e.g., list widget or table)
+        ui->listEmployees->addItem(QString("%1 - %2").arg(id).arg(name));
+    }
+}
+
+
+
+void MainWindow::onEmployeeSelected(QListWidgetItem *item) {
+    if (!item) return;
+
+    // Extract ID (format: "123 - John Doe")
+    QString text = item->text();
+    int id = text.section(" - ", 0, 0).toInt();
+    QString name = text.section(" - ", 1);
+
+    // Build employee object
+    Employee emp(id, name);
+
+    // Load work records
+    QList<QVariantMap> rawRecords = WorkRecordDataAccessObject::fetchRecordsForEmployee(id);
+    for (const QVariantMap &rec : rawRecords) {
+        WorkRecord wr;
+        wr.id = rec["id"].toInt();
+        wr.startTime = rec["start_time"].toDateTime();
+        wr.endTime = rec["end_time"].toDateTime();
+        emp.addWorkRecord(wr);
+    }
+
+    // Create or update EmployeePage
+    if (!employeePage) {
+        employeePage = new EmployeePage(this);
+        centralWidget()->layout()->addWidget(employeePage);
+    }
+    employeePage->setEmployee(emp);
+    employeePage->show();
+}
+
+
+void MainWindow::onAddEmployeeClicked()
+{
+    // addEmployeePage
+    if (!addEmployeePage) {
+        addEmployeePage = new AddEmployeePage(this);
+    }
+    centralWidget()->layout()->addWidget(addEmployeePage);
+    addEmployeePage->show();
+
+
+    // bool ok;
+    // QString name = QInputDialog::getText(this, tr("Add Employee"),
+    //                                      tr("Employee Name:"), QLineEdit::Normal,
+    //                                      "", &ok);
+    // if (ok && !name.trimmed().isEmpty())
+    // {
+    //     int id = -1;
+    //     bool success = EmployeeDataAccessObject::insertEmployee(name.trimmed(), &id);
+    //     if (success) {
+    //         ui->listEmployees->addItem(QString("%1 - %2").arg(id).arg(name));
+    //     } else {
+    //         qWarning() << "Failed to insert employee.";
+    //     }
+    // }
+}

@@ -21,13 +21,20 @@ DBManager &DBManager::instance() {
 /**
  * @brief Attempts to connect to a MySQL database.
  */
-bool DBManager::connectToMySQL(const QString &host, int port,
-                               const QString &dbName,
-                               const QString &user,
-                               const QString &password) {
-    if (QSqlDatabase::contains("main")) {
+bool DBManager::connectToMySQL(
+    const QString &host,
+    int port,
+    const QString &dbName,
+    const QString &user,
+    const QString &password
+    )
+{
+    if (QSqlDatabase::contains("main"))
+    {
         _db = QSqlDatabase::database("main");
-    } else {
+    }
+    else
+    {
         _db = QSqlDatabase::addDatabase("QMYSQL", "main");
     }
 
@@ -38,7 +45,8 @@ bool DBManager::connectToMySQL(const QString &host, int port,
     _db.setPassword(password);
 
     _connectedToMySQL = _db.open();
-    if (!_connectedToMySQL) {
+    if (!_connectedToMySQL)
+    {
         qWarning() << "MySQL connection failed:" << _db.lastError().text();
     }
 
