@@ -17,8 +17,7 @@ int main(int argc, char *argv[]) {
     app.setOrganizationName("MyCompany");
 
     // Load saved language from settings
-    AppSettings settings;
-    QString langCode = settings.languageCode();
+    QString langCode = AppSettings::instance().languageCode();
 
     // Attempt to load translation
     bool ok = Translator::instance().loadLanguage(langCode);

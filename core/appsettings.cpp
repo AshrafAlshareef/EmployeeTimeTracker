@@ -3,6 +3,12 @@
 
 AppSettings::AppSettings() : _settings("MyCompany", "EmployeeTimeTracker") {}
 
+AppSettings& AppSettings::instance()
+{
+    static AppSettings _instance;
+    return _instance;
+}
+
 QString AppSettings::databaseHost() const { return _settings.value("db/host", "localhost").toString(); }
 int AppSettings::databasePort() const { return _settings.value("db/port", 3306).toInt(); }
 QString AppSettings::databaseName() const { return _settings.value("db/name", "employees").toString(); }

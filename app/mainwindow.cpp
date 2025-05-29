@@ -13,8 +13,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     // Load saved language and set initial selection
-    AppSettings settings;
-    QString savedLang = settings.languageCode();
+    QString savedLang = AppSettings::instance().languageCode();
 
 
     // Create and configure language combo box
@@ -51,10 +50,20 @@ void MainWindow::onLanguageChanged(int index)
 {
     QString langCode = _languageCombo->itemData(index).toString();
     if (Translator::instance().loadLanguage(langCode)) {
-        AppSettings settings;
-        settings.setLanguageCode(langCode);
+        AppSettings::instance().setLanguageCode(langCode);
         // No need to call retranslateUi here anymore
     }
     // if using .ui file:
-    // ui->retranslateUi(this);
+    ui->retranslateUi(this); // FIXME: do i realy need this here
 }
+
+
+void MainWindow::on_actionPreferences_triggered()
+{
+    // preferencesPage
+    preferencesPage = new PreferencesPage(this);
+
+    centralWidget()->layout()->addWidget(preferencesPage);
+    preferencesPage->show();
+}
+

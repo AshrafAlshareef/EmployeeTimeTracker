@@ -1,21 +1,16 @@
 // core/appsettings.h
 #pragma once
 
-/**
- * @file appsettings.h
- * @brief Provides persistent application-level settings such as database config and UI preferences.
- */
-
 #include <QString>
 #include <QSettings>
 
 /**
  * @class AppSettings
- * @brief Centralized access to application settings stored in QSettings.
+ * @brief Singleton class for centralized access to application settings.
  */
 class AppSettings {
 public:
-    AppSettings();
+    static AppSettings& instance();  // Singleton accessor
 
     QString databaseHost() const;
     int databasePort() const;
@@ -34,5 +29,9 @@ public:
     void setLanguageCode(const QString &value);
 
 private:
+    AppSettings();  // Private constructor
+    Q_DISABLE_COPY(AppSettings)  // Disable copy constructor and assignment
     QSettings _settings; ///< Internal settings object (INI or platform-specific)
+
 };
+

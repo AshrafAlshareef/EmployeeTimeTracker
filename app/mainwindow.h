@@ -9,6 +9,7 @@
 #include <QMainWindow>
 #include <QComboBox>
 #include <QWidgetAction>
+#include "preferencespage.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -27,10 +28,11 @@ public:
 
 private slots:
     void onLanguageChanged(int index);
-
+    void on_actionPreferences_triggered();
 
 private:
     Ui::MainWindow *ui; ///< Pointer to the UI
     QComboBox *_languageCombo = nullptr; ///< Language selector combo box
+    PreferencesPage *preferencesPage = nullptr;
 
 };
