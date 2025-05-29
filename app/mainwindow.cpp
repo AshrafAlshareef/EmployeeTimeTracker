@@ -4,6 +4,7 @@
 #include "translator.h"
 #include "appsettings.h"
 
+
 /**
  * @brief Constructs the main window and sets up UI elements.
  */
@@ -18,8 +19,9 @@ MainWindow::MainWindow(QWidget *parent)
 
     // Create and configure language combo box
     _languageCombo = new QComboBox(this);
-    _languageCombo->addItem("🌐 English", "en");
-    _languageCombo->addItem("🌐 Arabic", "ar");
+    _languageCombo->addItem(tr("🌐 English"), "en");
+    _languageCombo->addItem(tr("🌐 Arabic"), "ar");
+
 
     // Create widget action for menu bar
     QWidgetAction *langAction = new QWidgetAction(this);
@@ -30,12 +32,11 @@ MainWindow::MainWindow(QWidget *parent)
     int index = _languageCombo->findData(savedLang);
     if (index != -1) _languageCombo->setCurrentIndex(index);
 
-    connect(_languageCombo, &QComboBox::currentIndexChanged, this, [=](int index) {
-        QString langCode = _languageCombo->itemData(index).toString();
-        extern Translator translator;
-        translator.loadLanguage(langCode);
-        AppSettings settings;
-        settings.setLanguageCode(langCode);
+    connect(_languageCombo, QOverload<int>::of(&QComboBox::currentIndexChanged),
+            this, &MainWindow::onLanguageChanged);
+
+    connect(&Translator::instance(), &Translator::languageChanged, this, [=]() {
+        ui->retranslateUi(this);
     });
 }
 
@@ -44,4 +45,16 @@ MainWindow::MainWindow(QWidget *parent)
  */
 MainWindow::~MainWindow() {
     delete ui;
+}
+
+void MainWindow::onLanguageChanged(int index)
+{
+    QString langCode = _languageCombo->itemData(index).toString();
+    if (Translator::instance().loadLanguage(langCode)) {
+        AppSettings settings;
+        settings.setLanguageCode(langCode);
+        // No need to call retranslateUi here anymore
+    }
+    // if using .ui file:
+    // ui->retranslateUi(this);
 }

@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <ui version="4.0">
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
   <property name="windowTitle">
-   <string>Employee Time Tracker</string>
+   <string>TITLE_MAIN</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="mainLayout">
@@ -13,18 +13,18 @@
        <item>
         <widget class="QPushButton" name="btnAddEmployee">
          <property name="text">
-          <string>+ Add Employee</string>
+          <string>ADD_EMPLOYEE</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QListWidget" name="listEmployees"/>
+        <widget class="QListWidget" name="listEmployees" />
        </item>
       </layout>
      </widget>
     </item>
     <item>
-     <widget class="QStackedWidget" name="stackMainContent"/>
+     <widget class="QStackedWidget" name="stackMainContent" />
     </item>
    </layout>
   </widget>
@@ -33,51 +33,51 @@
     <rect><x>0</x><y>0</y><width>800</width><height>22</height></rect>
    </property>
    <widget class="QMenu" name="menuFile">
-    <property name="title"><string>File</string></property>
-    <addaction name="actionImport"/>
-    <addaction name="actionExport"/>
-    <addaction name="actionExit"/>
+    <property name="title"><string>MENU_FILE</string></property>
+    <addaction name="actionImport" />
+    <addaction name="actionExport" />
+    <addaction name="actionExit" />
    </widget>
    <widget class="QMenu" name="menuSettings">
-    <property name="title"><string>Settings</string></property>
-    <addaction name="actionPreferences"/>
+    <property name="title"><string>MENU_SETTINGS</string></property>
+    <addaction name="actionPreferences" />
    </widget>
    <widget class="QMenu" name="menuInfo">
-    <property name="title"><string>Info</string></property>
-    <addaction name="actionAboutApp"/>
-    <addaction name="actionAboutQt"/>
+    <property name="title"><string>MENU_INFO</string></property>
+    <addaction name="actionAboutApp" />
+    <addaction name="actionAboutQt" />
    </widget>
    <widget class="QMenu" name="menuLanguage">
-    <property name="title"><string>🌐</string></property>
-    <addaction name="actionLanguageSelector"/>
+    <property name="title"><string>MENU_LANGUAGE</string></property>
+    <addaction name="actionLanguageSelector" />
    </widget>
-   <addaction name="menuFile"/>
-   <addaction name="menuSettings"/>
-   <addaction name="menuInfo"/>
-   <addaction name="menuLanguage"/>
+   <addaction name="menuFile" />
+   <addaction name="menuSettings" />
+   <addaction name="menuInfo" />
+   <addaction name="menuLanguage" />
   </widget>
   <action name="actionImport">
-   <property name="text"><string>Import...</string></property>
+   <property name="text"><string>ACTION_IMPORT</string></property>
   </action>
   <action name="actionExport">
-   <property name="text"><string>Export...</string></property>
+   <property name="text"><string>ACTION_EXPORT</string></property>
   </action>
   <action name="actionExit">
-   <property name="text"><string>Exit</string></property>
+   <property name="text"><string>ACTION_EXIT</string></property>
   </action>
   <action name="actionPreferences">
-   <property name="text"><string>Preferences</string></property>
+   <property name="text"><string>ACTION_PREFERENCES</string></property>
   </action>
   <action name="actionAboutApp">
-   <property name="text"><string>About App</string></property>
+   <property name="text"><string>ACTION_ABOUT_APP</string></property>
   </action>
   <action name="actionAboutQt">
-   <property name="text"><string>About Qt</string></property>
+   <property name="text"><string>ACTION_ABOUT_QT</string></property>
   </action>
   <action name="actionLanguageSelector">
-   <property name="text"><string>🌐 Language</string></property>
+   <property name="text"><string>ACTION_LANGUAGE_SELECTOR</string></property>
   </action>
  </widget>
- <resources/>
- <connections/>
+ <resources />
+ <connections />
 </ui>

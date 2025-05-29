@@ -1,25 +1,25 @@
-// translations/translator.h
 #pragma once
 
 /**
  * @file translator.h
- * @brief Provides runtime language translation capabilities for the application.
+ * @brief Singleton providing runtime language translation capabilities.
  */
 
 #include <QTranslator>
 #include <QString>
-#include <QLocale>
 #include <QObject>
 
 /**
  * @class Translator
- * @brief Loads and installs Qt translation files at runtime.
+ * @brief Singleton for managing translation loading and switching.
  */
 class Translator : public QObject {
     Q_OBJECT
 
 public:
-    explicit Translator(QObject *parent = nullptr);
+    static Translator& instance(); // Singleton accessor
+
+    Q_DISABLE_COPY(Translator) // Disable copy/assignment
 
     /**
      * @brief Loads and applies a .qm file by language code (e.g., "en", "ar").
@@ -41,6 +41,8 @@ signals:
     void languageChanged();
 
 private:
+    Translator(QObject *parent = nullptr); ///< Private constructor
+
     QTranslator _translator;
     QString _currentLang;
 };

@@ -25,7 +25,12 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void onLanguageChanged(int index);
+
+
 private:
     Ui::MainWindow *ui; ///< Pointer to the UI
     QComboBox *_languageCombo = nullptr; ///< Language selector combo box
+
 };
